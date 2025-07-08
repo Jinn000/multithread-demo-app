@@ -4,10 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.ConfigurableApplicationContext;
-import ru.zav.multithread_demo_app.bank.BankMultiThreadTestServiceImpl;
-import ru.zav.multithread_demo_app.bank.BankSingleThreadTestServiceImpl;
-import ru.zav.multithread_demo_app.bank.BankThreadPoolTestServiceImpl;
-import ru.zav.multithread_demo_app.testing.BankTestingService;
 
 @ConfigurationPropertiesScan
 @SpringBootApplication

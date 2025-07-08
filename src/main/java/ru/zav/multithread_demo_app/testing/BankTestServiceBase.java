@@ -1,10 +1,10 @@
-package ru.zav.multithread_demo_app.bank;
+package ru.zav.multithread_demo_app.testing;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
+import ru.zav.multithread_demo_app.bank.Bank;
 import ru.zav.multithread_demo_app.bank.account.Account;
-import ru.zav.multithread_demo_app.bank.account.AccountSynchronizedImpl;
-import ru.zav.multithread_demo_app.testing.BankTestingService;
+import ru.zav.multithread_demo_app.bank.factory.BankFactory;
 
 import java.math.BigInteger;
 import java.time.Duration;
@@ -18,14 +18,9 @@ public abstract class BankTestServiceBase implements BankTestingService {
     protected abstract String getImplementationName();
 
     @Override
-    public boolean startTest() {
+    public boolean startTest(@NotNull BankFactory bankFactory) {
         var startTimestamp = LocalDateTime.now();
-        var bank = new BankSynchronizedImpl();
-
-        // проинициализировать банк одинаковыми счетами
-        for(int count = 0; count< ACCOUNT_QUANTITY; count++){
-            bank.addAccount(new AccountSynchronizedImpl("ACC_%d".formatted(count), DEFAULT_START_VALUE));
-        }
+        var bank = bankFactory.createBank();
 
         doExecution(bank);
 
@@ -74,6 +69,7 @@ public abstract class BankTestServiceBase implements BankTestingService {
         };
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static void hardWorkEmulate(long timeoutMills){
         LocalDateTime endTime = LocalDateTime.now().plusNanos(timeoutMills * 1000_000);
         while(endTime.isAfter(LocalDateTime.now())){

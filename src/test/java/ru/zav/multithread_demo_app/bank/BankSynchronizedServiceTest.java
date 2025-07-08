@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import ru.zav.multithread_demo_app.bank.factory.BankFactory;
+import ru.zav.multithread_demo_app.bank.factory.SynchronizedBankFactoryImpl;
 import ru.zav.multithread_demo_app.testing.BankTestingService;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,7 +17,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("Тестирование модели банка")
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-class BankTestServiceBaseTest {
+class BankSynchronizedServiceTest {
+    BankFactory bankFactory = new SynchronizedBankFactoryImpl();
+
     @Qualifier(value = "bankSingleThreadTestServiceImpl")
     @Autowired
     private BankTestingService singleThreadService;
@@ -35,21 +39,21 @@ class BankTestServiceBaseTest {
     @Test
     @DisplayName("SingleThreadTest")
     void startSingleThreadTest() {
-        var isSuccess = singleThreadService.startTest();
+        var isSuccess = singleThreadService.startTest(bankFactory);
         assertTrue(isSuccess, "Тест завершился неудачей. Баланс не сошелся");
     }
 
     @Test
     @DisplayName("MultiThreadTest")
     void startMultiThreadTest() {
-        var isSuccess = multipleThreadService.startTest();
+        var isSuccess = multipleThreadService.startTest(bankFactory);
         assertTrue(isSuccess, "Тест завершился неудачей. Баланс не сошелся");
     }
 
     @Test
     @DisplayName("ThreadPoolTest")
     void startThreadPoolTest() {
-        var isSuccess = threadPoolService.startTest();
+        var isSuccess = threadPoolService.startTest(bankFactory);
         assertTrue(isSuccess, "Тест завершился неудачей. Баланс не сошелся");
     }
 }

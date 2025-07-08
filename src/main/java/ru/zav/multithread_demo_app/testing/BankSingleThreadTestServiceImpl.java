@@ -1,9 +1,11 @@
-package ru.zav.multithread_demo_app.bank;
+package ru.zav.multithread_demo_app.testing;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import ru.zav.multithread_demo_app.bank.Bank;
+import ru.zav.multithread_demo_app.bank.factory.BankFactory;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -15,7 +17,7 @@ public class BankSingleThreadTestServiceImpl extends BankTestServiceBase {
     @Override
     protected void doExecution(Bank bank) {
 
-        for (int cnt = 0; cnt<ITERATIONS_QUANTITY; cnt++){
+        for (int cnt = 0; cnt< ITERATIONS_QUANTITY; cnt++){
             super.getOperationRunnable(bank).run();
         }
     }

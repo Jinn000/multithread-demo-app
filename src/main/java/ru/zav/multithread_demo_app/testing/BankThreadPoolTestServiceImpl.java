@@ -1,9 +1,11 @@
-package ru.zav.multithread_demo_app.bank;
+package ru.zav.multithread_demo_app.testing;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import ru.zav.multithread_demo_app.bank.Bank;
+import ru.zav.multithread_demo_app.bank.factory.BankFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +24,7 @@ public class BankThreadPoolTestServiceImpl extends BankTestServiceBase {
 
         final ExecutorService executorService = Executors.newFixedThreadPool(25);
 
-        for (int cnt = 0; cnt<ITERATIONS_QUANTITY; cnt++){
+        for (int cnt = 0; cnt< ITERATIONS_QUANTITY; cnt++){
             var future = executorService.submit(super.getOperationRunnable(bank));
             futureList.add(future);
         }
