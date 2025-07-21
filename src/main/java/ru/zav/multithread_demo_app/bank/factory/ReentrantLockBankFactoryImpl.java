@@ -4,8 +4,8 @@ import ru.zav.multithread_demo_app.bank.Bank;
 import ru.zav.multithread_demo_app.bank.BankLockImpl;
 import ru.zav.multithread_demo_app.bank.account.AccountLockImpl;
 
-import static ru.zav.multithread_demo_app.testing.BankTestingService.ACCOUNT_QUANTITY;
-import static ru.zav.multithread_demo_app.testing.BankTestingService.DEFAULT_START_VALUE;
+import static ru.zav.multithread_demo_app.bank.testing.BankTestingService.ACCOUNT_QUANTITY;
+import static ru.zav.multithread_demo_app.bank.testing.BankTestingService.DEFAULT_START_VALUE;
 
 public class ReentrantLockBankFactoryImpl extends BankFactory{
     @Override

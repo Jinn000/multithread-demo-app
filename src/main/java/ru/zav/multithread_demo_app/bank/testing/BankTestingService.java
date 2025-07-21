@@ -1,4 +1,4 @@
-package ru.zav.multithread_demo_app.testing;
+package ru.zav.multithread_demo_app.bank.testing;
 
 import ru.zav.multithread_demo_app.bank.factory.BankFactory;
 

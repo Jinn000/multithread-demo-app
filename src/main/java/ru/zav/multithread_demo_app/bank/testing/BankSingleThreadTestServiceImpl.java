@@ -1,11 +1,10 @@
-package ru.zav.multithread_demo_app.testing;
+package ru.zav.multithread_demo_app.bank.testing;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.zav.multithread_demo_app.bank.Bank;
-import ru.zav.multithread_demo_app.bank.factory.BankFactory;
 
 @Slf4j
 @RequiredArgsConstructor
