@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import ru.zav.multithread_demo_app.bank.factory.BankFactory;
 import ru.zav.multithread_demo_app.bank.factory.SynchronizedBankFactoryImpl;
-import ru.zav.multithread_demo_app.testing.BankTestingService;
+import ru.zav.multithread_demo_app.bank.testing.BankTestingService;
 
 import static org.junit.jupiter.api.Assertions.*;
 

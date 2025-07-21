@@ -1,4 +1,4 @@
-package ru.zav.multithread_demo_app.testing;
+package ru.zav.multithread_demo_app.bank.testing;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
@@ -12,6 +12,8 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 import java.util.Random;
+
+import static ru.zav.multithread_demo_app.utils.CommonUtils.hardWorkEmulate;
 
 @Slf4j
 public abstract class BankTestServiceBase implements BankTestingService {
@@ -67,14 +69,5 @@ public abstract class BankTestServiceBase implements BankTestingService {
                 log.info("{}. Total - Ok", getImplementationName());
             }
         };
-    }
-
-    @SuppressWarnings("SameParameterValue")
-    private static void hardWorkEmulate(long timeoutMills){
-        LocalDateTime endTime = LocalDateTime.now().plusNanos(timeoutMills * 1000_000);
-        while(endTime.isAfter(LocalDateTime.now())){
-            final double sin = Math.sin(Math.random() * 100);
-            if(sin < 0) {continue;}
-        }
     }
 }
